@@ -18,7 +18,7 @@ class PolyTreeNode
     end
 
     def add_child(child)
-      child.parent = self
+        child.parent = self
     end
     
     def remove_child(child)
@@ -30,15 +30,15 @@ class PolyTreeNode
     end
 
     def dfs(target_value)
-      return self if self.value == target_value
-      
-      search_result = nil
-      self.children.each do |child|
-        search_result = child.dfs(target_value)
-        return search_result unless search_result.nil?
-      end
-      
-      return nil
+        return self if self.value == target_value
+
+        search_result = nil
+        self.children.each do |child|
+            search_result = child.dfs(target_value)
+            return search_result unless search_result.nil?
+        end
+
+        return nil
     end
     
     def bfs(target)
