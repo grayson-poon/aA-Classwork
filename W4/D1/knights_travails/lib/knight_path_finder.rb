@@ -33,8 +33,8 @@ class KnightPathFinder
 
 end
 
-# test = KnightPathFinder.new([0,0])
-# p test.root_node
+test = KnightPathFinder.new([0,1])
+p test.root_node
 
 # print KnightPathFinder.valid_moves([1,2])
 
