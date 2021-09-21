@@ -1,4 +1,4 @@
-
+require_relative "null_piece"
 
 class Piece
   attr_reader :board, :color, :position
