@@ -25,6 +25,6 @@ class Board
 
 end
 
-# board = Board.new(5)
+board = Board.new(5)
 
-# p board
+p board

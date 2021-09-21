@@ -14,12 +14,22 @@ class KnightPathFinder
     @root_node = @board[pos.first][pos.last]
   end
 
-  def self.valid_moves(pos)
-    
+  def self.valid_moves(current_pos) # 0,0 [-1,-2] [-1,-2] 0-7
+    possible_translations = [[1,2], [1,-2], [-1,2], [-1,-2], [2,1], [2,-1], [-2,1], [-2,-1]]
+
+    # [2,4] => [3,6], [3,2]
+    possible_positions = []
+    possible_translations.each.with_index do |translation, idx|
+      sub_arr.each.with_index do |ele, j|
+        possible_positions << [current_pos[j] + sub_arr[j]]
+      end
+    end
+
   end
 
 end
 
 test = KnightPathFinder.new([0,0])
 
-p test.root_node
+# KnightPathFinder.valid_moves([2,4])
+
