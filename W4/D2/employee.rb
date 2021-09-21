@@ -10,13 +10,17 @@ class Employee
     @boss = nil
   end
 
+  def inspect
+    p "<#{name}, #{title}, #{salary}>"
+  end
+
   def set_bonus(multiplier)
     @bonus = salary * multiplier
   end
 
   def boss=(boss_instance)
     if @boss.nil?
-      boss = boss_instance
+      @boss = boss_instance
       boss_instance.employees << self
     else
       self.boss.employees.remove(self)
@@ -29,5 +33,7 @@ class Employee
 end
 
 e = Employee.new("a", "yes", 100)
-p e.set_bonus(5)
-p e.bonus
+f = Employee.new("f", "yes", 200)
+g = Employee.new("g", "yes", 300)
+# p e.set_bonus(5)
+# p e.bonus
