@@ -15,10 +15,14 @@ class Manager < Employee
       if worker.title.downcase == "manager"
         worker.employees.each do |sub_worker|
           all_employees.push(sub_worker)
-          p all_employees
         end
       end
     end
+
+    sum = 0
+    all_employees.each { |employee| sum += employee.salary }
+    
+    return sum * multiplier
   end
 
 end
@@ -29,9 +33,13 @@ g = Employee.new("g", "yes", 300)
 
 n = Manager.new("alex", "manager", 100)
 m = Manager.new("alex", "manager", 100)
+
 g.boss = n
 f.boss = n
 e.boss = n
+
 n.boss = m
-p m.set_bonus(5)
+
+p m.set_bonus(2)
+# p m.set_bonus(5)
 # p m.employees
