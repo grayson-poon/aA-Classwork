@@ -16,8 +16,13 @@ class Employee
 
   def boss=(boss_instance)
     if @boss.nil?
-      boss = boss_instance.name
+      boss = boss_instance
+      boss_instance.employees << self
     else
+      self.boss.employees.remove(self)
+      self.boss = boss_instance
+      boss_instance.employees << self
+    end
 
   end
 

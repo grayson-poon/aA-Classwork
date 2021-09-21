@@ -1,13 +1,22 @@
 require_relative "employee"
 
-class Manager
+class Manager < Employee
 
-  attr_reader :name, :employee, :boss
+  attr_reader :employees
 
-  def initialize(name)
-    @name = name
+  def initialize(name, title, salary)
+    super(name, title, salary)
     @employees = []
-    @boss = nil
+  end
+
+  def set_bonus(multiplier)
+    all_employees = [] + employees
+    all_employees.each do |worker|
+      if worker
+    end
   end
 
 end
+
+m = Manager.new("alex", "job", 100)
+p m.title
