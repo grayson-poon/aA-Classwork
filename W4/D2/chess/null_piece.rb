@@ -6,4 +6,8 @@ class NullPiece < Piece
     
   end
 
+  def inspect
+    "<NullPiece>"
+  end
+
 end

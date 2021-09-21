@@ -16,9 +16,13 @@ class Board
     # end
 
     @rows.each.with_index do |row, row_i|
-      if [0, 1, 6, 7].include?(row_i)
+      if [0, 1].include?(row_i)
         row.each.with_index do |slot, col_i|
-          slot = Piece.new(:B, @rows, [row_i, col_i])
+          @rows[row_i][col_i] = Piece.new(:B, [row_i, col_i])
+        end
+      elsif [6, 7].include?(row_i)
+        row.each.with_index do |slot, col_i|
+          @rows[row_i][col_i] = Piece.new(:W, [row_i, col_i])
         end
       end
     end
@@ -27,20 +31,23 @@ class Board
     @rows.each.with_index do |row, row_i|
       row.each.with_index do |slot, col_i|
         if slot == nil
-          @board[row_i][col_i] = NullPiece.new
+          @rows[row_i][col_i] = NullPiece.new
         end
       end
     end
   end
 
-  def move_piece(start_pos, ending_pos)
+  def move_piece(color, start_pos, ending_pos)
     if start_pos == nil 
       raise "No starting piece here"
     end
 
-    if !rows.include?(ending_pos)
+    if !rows.include?(ending_pos.first) || !rows.include?(ending_pos.last)
       raise "Illegal move"
     end
+
+    @rows[start_pos.first][start_pos.last], @rows[ending_pos.first][ending_pos.last] = @rows[ending_pos.first][ending_pos.last],  @rows[start_pos.first][start_pos.last]
+
 
   end
 
