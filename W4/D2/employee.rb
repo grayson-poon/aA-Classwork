@@ -14,6 +14,13 @@ class Employee
     @bonus = salary * multiplier
   end
 
+  def boss=(boss_instance)
+    if @boss.nil?
+      boss = boss_instance.name
+    else
+
+  end
+
 end
 
 e = Employee.new("a", "yes", 100)
