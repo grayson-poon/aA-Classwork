@@ -1,7 +1,7 @@
 module Slideable
 
   def horizontal_dirs
-    HORIZONTAL_DIRS
+    grow_unblocked_moves(HORIZONTAL_DIRS)
   end
 
   def diagnonal_dirs
@@ -9,7 +9,7 @@ module Slideable
   end
 
   def moves
-
+   
   end
 
   private
@@ -17,20 +17,27 @@ module Slideable
   HORIZONTAL_DIRS = [[0, 1], [1, 0], [-1, 0], [0, -1]]
   DIAGONAL_DIRS = [[1, 1], [1,-1], [-1, -1], [-1, 1]]
 
-  def grow_unblocked_moves
-    i = 1
+  def grow_unblocked_moves(move_dirs_arr)
+
     possible_positions = []
-    HORIZONTAL_DIRS.each do |unit_dir|
+
+    move_dirs_arr.each do |unit_dir|
+      i = 1
       extended_pos = unit_dir.map(&:*i)
-      if @board_instance[extended_pos] == NullPiece.instance
+
+      while @board_instance[extended_pos] == NullPiece.instance
         possible_positions << extended_pos
-      else
-        if @board_instance[extended_pos].color != self.color
-          possible_positions << extended_pos
-        end
+        i += 1
+        extended_pos.map!(&:*i)
       end
-      i += 1 # add while loop condition
+
+      if @board_instance[extended_pos].color != self.color
+        possible_positions << extended_pos
+      end
+
     end
+
+    return possible_positions
   end
 
 end
