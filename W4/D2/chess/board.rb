@@ -8,6 +8,8 @@ class Board
 
   def initialize
     @rows = Array.new(8) { Array.new(8, nil) }
+    @b_captured = []
+    @w_captured = []
 
     @rows.each.with_index do |row, row_i|
       if [0, 1].include?(row_i)
@@ -32,7 +34,7 @@ class Board
 
   def [](pos)
     row, col = pos
-    @rows[row][col] # self
+    @rows[row][col]
   end
 
   def []=(pos, val)
@@ -48,43 +50,18 @@ class Board
     if !(0..7).to_a.include?(ending_pos.first) || !(0..7).to_a.include?(ending_pos.last)
       raise "Illegal move"
     end
-    # piece1 = self[start_pos]
-    # piece2 = self[ending_pos]
+
     self[start_pos], self[ending_pos] = self[ending_pos], self[start_pos]
-    # piece1.position = ending_pos
-    # piece2.position = start_pos
-    self[ending_pos].position = ending_pos
-    # self[start_pos].position, self[ending_pos].position = self[ending_pos].position, self[start_pos].position
+    self[ending_pos].position = ending_pos # self[5,5] = [5,5] # self[0,0] = 0,0
+
+    if self[start_pos].color == :W
+      @w_captured << self[start_pos].position
+    elsif self[start_pos].color == :B
+      @b_captured << self[start_pos].position
+    end
+    
+    self[start_pos].position = NullPiece.instance
+
   end
 
-
 end
-
-b = Board.new
-
-# p b.move_piece(:B, [0, 0], [5, 0])
-# p b
-# puts "----------"
-# p b.[]([5,4])  #works
-# p b[[5, 4]]
-# p = Piece.new(:B, b, [0, 2])
-# # p.position = [0, 0]
-# puts
-# p p.position
-p b[[0,2]].position
-# p b[[5, 0]].position
-# puts
-p b.move_piece(:B, [0, 2], [0, 3])
-# puts
-# p p.position
-# puts
-p b[[0,2]].position
-p b[[0, 3]].position
-# p b
-# p p.empty?
-
-# p b[[0,2]].position
-# b.move_piece(:B, [0, 2], [5, 0])
-# p b[[5, 0]].position
-# p.position = [5, 0]
-# p b[[5, 0]].position

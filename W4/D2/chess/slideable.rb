@@ -1,7 +1,7 @@
 module Slideable
 
   def horizontal_dirs
-
+    
   end
 
   def diagnonal_dirs
@@ -9,7 +9,7 @@ module Slideable
   end
 
   def moves
-    
+
   end
 
   private

@@ -14,11 +14,7 @@ class Piece
   end
 
   def position=(new_position)
-    # p self.position
     @position = new_position
-    # p new_position
-    # self.board_instance[position] = self.board_instance[new_position]
-    # position = new_position
   end
 
   def empty?
