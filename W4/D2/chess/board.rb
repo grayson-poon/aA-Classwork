@@ -32,7 +32,7 @@ class Board
 
   def [](pos)
     row, col = pos
-    @rows[row][col]
+    @rows[row][col] # self
   end
 
   def []=(pos, val)
