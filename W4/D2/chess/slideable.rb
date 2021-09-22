@@ -22,6 +22,15 @@ module Slideable
     possible_positions = []
     HORIZONTAL_DIRS.each do |unit_dir|
       extended_pos = unit_dir.map(&:*i)
+      if @board_instance[extended_pos] == NullPiece.instance
+        possible_positions << extended_pos
+      else
+        if @board_instance[extended_pos].color != self.color
+          possible_positions << extended_pos
+        end
+      end
+      i += 1
+
       if @board_instance[extended_pos] != NullPiece.instance
         if @board_instance[extended_pos].color != self.color
           possible_positions << extended_pos
