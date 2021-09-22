@@ -13,7 +13,8 @@ class NullPiece < Piece
   end
 
   def inspect
-    "<NullPiece>"
+    "<#{NullPiece.instance}>"
   end
+
 
 end
