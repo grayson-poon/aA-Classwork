@@ -48,9 +48,13 @@ class Board
     if !(0..7).to_a.include?(ending_pos.first) || !(0..7).to_a.include?(ending_pos.last)
       raise "Illegal move"
     end
-
+    # piece1 = self[start_pos]
+    # piece2 = self[ending_pos]
     self[start_pos], self[ending_pos] = self[ending_pos], self[start_pos]
-  
+    # piece1.position = ending_pos
+    # piece2.position = start_pos
+    self[ending_pos].position = ending_pos
+    # self[start_pos].position, self[ending_pos].position = self[ending_pos].position, self[start_pos].position
   end
 
 
@@ -58,16 +62,29 @@ end
 
 b = Board.new
 
-p b.move_piece(:B, [0, 0], [5, 0])
+# p b.move_piece(:B, [0, 0], [5, 0])
 # p b
 # puts "----------"
 # p b.[]([5,4])  #works
 # p b[[5, 4]]
-# p = Piece.new(:W, b, [0, 0])
+# p = Piece.new(:B, b, [0, 2])
+# # p.position = [0, 0]
+# puts
+# p p.position
+p b[[0,2]].position
+# p b[[5, 0]].position
+# puts
+p b.move_piece(:B, [0, 2], [0, 3])
+# puts
+# p p.position
+# puts
+p b[[0,2]].position
+p b[[0, 3]].position
+# p b
+# p p.empty?
 
-b[[5,4].empty?]
-
-p b
-p p.empty?
-
-
+# p b[[0,2]].position
+# b.move_piece(:B, [0, 2], [5, 0])
+# p b[[5, 0]].position
+# p.position = [5, 0]
+# p b[[5, 0]].position

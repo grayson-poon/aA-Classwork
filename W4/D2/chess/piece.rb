@@ -1,11 +1,11 @@
 require_relative "null_piece"
 
 class Piece
-  attr_reader :board, :color, :position
+  attr_reader :board_instance, :color, :position
 
   def initialize(color, board_instance, position) # pass in self when initializing a piece with a board instance
     @color = color
-    @board = board_instance
+    @board_instance = board_instance
     @position = position # [0, 0]
   end
 
@@ -13,12 +13,16 @@ class Piece
     "<RegularPiece> #{color}"
   end
 
-  def position=(value)
-    self.position = value
+  def position=(new_position)
+    # p self.position
+    @position = new_position
+    # p new_position
+    # self.board_instance[position] = self.board_instance[new_position]
+    # position = new_position
   end
 
   def empty?
-    if self.position.is_a?(NullPiece.instance)
+    if @board_instance[position] == NullPiece.instance
       true
     else
       false
@@ -29,10 +33,7 @@ class Piece
     piece_symbols = [:K, :KN, :R, :BI, :Q, :P]
   end
 
-  # def []=(pos, self)
-  #   row, col = pos
-  #   @board[pos] = self
-  # end
+
 
   def moves
 
