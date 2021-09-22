@@ -1,7 +1,7 @@
 module Slideable
 
   def horizontal_dirs
-    grow_unblocked_moves(HORIZONTAL_DIRS)
+    HORIZONTAL_DIRS
   end
 
   def diagnonal_dirs
@@ -9,7 +9,7 @@ module Slideable
   end
 
   def moves
-   
+    grow_unblocked_moves(move_dirs)
   end
 
   private

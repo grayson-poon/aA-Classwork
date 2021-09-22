@@ -1,18 +1,18 @@
 require_relative "piece"
 require "stepable"
 
-class Knight
+class King
 
   include Stepable
 
   def symbol
-    @symbol = :KN
+    @symbol = :K
   end
 
   protected
 
   def move_diffs
-    possible_moves = [[2, 1], [2, -1], [-2, 1], [-2, -1], [1, 2], [1, -2], [-1, 2], [-1, -2]]
+    possible_moves = [[1,0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]]
   end
 
 end
