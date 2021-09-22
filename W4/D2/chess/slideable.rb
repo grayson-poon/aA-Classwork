@@ -29,15 +29,7 @@ module Slideable
           possible_positions << extended_pos
         end
       end
-      i += 1
-
-      if @board_instance[extended_pos] != NullPiece.instance
-        if @board_instance[extended_pos].color != self.color
-          possible_positions << extended_pos
-        end
-      else
-        possible_positions << extended_pos
-      end
+      i += 1 # add while loop condition
     end
   end
 
