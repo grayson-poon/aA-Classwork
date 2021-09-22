@@ -18,11 +18,15 @@ class Piece
   end
 
   def empty?
-    if self.position == NullPiece.instance
+    if self.position.is_a?(NullPiece.instance)
       true
     else
       false
     end
+  end
+
+  def symbol
+    piece_symbols = [:K, :KN, :R, :BI, :Q, :P]
   end
 
   # def []=(pos, self)
@@ -31,7 +35,7 @@ class Piece
   # end
 
   def moves
-    
+
   end
 
 

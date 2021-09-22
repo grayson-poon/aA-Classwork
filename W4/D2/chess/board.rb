@@ -63,7 +63,10 @@ p b.move_piece(:B, [0, 0], [5, 0])
 # puts "----------"
 # p b.[]([5,4])  #works
 # p b[[5, 4]]
-p = Piece.new(:W, b, [0, 0])
+# p = Piece.new(:W, b, [0, 0])
+
+b[[5,4].empty?]
+
 p b
 p p.empty?
 
