@@ -18,4 +18,9 @@ class Piece
   #   @board[pos] = self
   # end
 
+  def moves
+    
+  end
+
+
 end
