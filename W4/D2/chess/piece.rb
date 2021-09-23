@@ -1,4 +1,4 @@
-require_relative "null_piece"
+# require_relative "null_piece"
 
 class Piece
   attr_reader :board_instance, :color, :position
@@ -26,7 +26,7 @@ class Piece
   end
 
   def symbol
-    piece_symbols = [:K, :KN, :R, :BI, :Q, :P]
+    piece_symbols = [:K, :KN, :R, :BP, :Q, :P]
   end
 
 

@@ -23,12 +23,12 @@ module Slideable
 
     move_dirs_arr.each do |unit_dir|
       i = 1
-      extended_pos = unit_dir.map(&:*i)
+      extended_pos = unit_dir.map { |x| x * i }
 
       while @board_instance[extended_pos] == NullPiece.instance
         possible_positions << extended_pos
         i += 1
-        extended_pos.map!(&:*i)
+        extended_pos.map! { |x| x * i }
       end
 
       if @board_instance[extended_pos].color != self.color
@@ -38,6 +38,10 @@ module Slideable
     end
 
     return possible_positions
+  end
+
+  def move_diffs
+    raise "Logic missing in Slideable"
   end
 
 end
