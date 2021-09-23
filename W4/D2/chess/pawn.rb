@@ -12,9 +12,9 @@ class Pawn < Piece
 
   def forward_direction
     if self.color == :B
-      return [0, 1]
+      return 1 
     else
-      return [0, -1]
+      return -1
     end
   end
 
@@ -26,6 +26,26 @@ class Pawn < Piece
     else
       return false
     end
+  end
+
+  def forward_steps # returns a 2D array
+    steps = [[0, self.forward_direction]]
+    if self.at_start_row?
+      steps << [0, 2 * self.forward_direction]
+    end
+
+    return steps
+
+  end
+
+  def side_attacks
+    
+    
+    
+    
+    # if 1,1 == pice not my color
+    #   then set my move == [above x.coord, self.forward_direction]
+    # end
   end
 
 end
