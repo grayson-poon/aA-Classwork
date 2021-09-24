@@ -1,4 +1,4 @@
-# require "byebug"
+require "byebug"
 
 # def my_min(array)
 #   # debugger
@@ -30,9 +30,8 @@ def my_min(array)
   return min
 end
 
-list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
+# list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 # p my_min(list)  # =>  -5
-
 
 # def largest_contiguous_subsum(array)
 #   sub_arrs = []
@@ -52,20 +51,54 @@ list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 # end
 
 def largest_contiguous_subsum(array)
+  largest_sum = array.first
+  current_sum = 0
 
-  array.length.times do
-    array.each.with_index do |ele,i|
-      
+  array.each do |ele|
+    current_sum += ele
+    if current_sum > largest_sum
+      largest_sum = current_sum
+    end
+
+    if current_sum < 0
+      current_sum = 0
     end
   end
+
+  return largest_sum
+  
+  # result = []
+  # temp = []
+  # array.each do |ele|
+  #   # debugger if ele == -5
+  #   if ele > 0
+  #     temp << ele
+  #   else
+  #     result << temp
+  #     temp = []
+  #   end
+  # end
+  # result << temp
+  
+  # result.each do |sub|
+  #   if sub.sum > largest_sum
+  #     largest_sum = sub.sum
+  #   end
+  # end
+
+  # return largest_sum
 end
 
-# list = [5, 3, -7]
-# p largest_contiguous_subsum(list) # => 8
 
-# list2 = [2, 3, -6, 7, -6, 7]
-# p largest_contiguous_subsum(list2)
+# list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 
-# list3 = [-5, -1, -3]
-# p largest_contiguous_subsum(list3)
+# p largest_contiguous_subsum(list)
 
+list = [5, 3, -7]
+p largest_contiguous_subsum(list) # => 8
+
+list2 = [2, 3, -6, 7, -6, 7]
+p largest_contiguous_subsum(list2)
+
+list3 = [-5, -1, -3]
+p largest_contiguous_subsum(list3)
