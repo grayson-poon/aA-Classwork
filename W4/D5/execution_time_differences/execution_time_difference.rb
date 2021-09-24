@@ -31,4 +31,41 @@ def my_min(array)
 end
 
 list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
-p my_min(list)  # =>  -5
+# p my_min(list)  # =>  -5
+
+
+# def largest_contiguous_subsum(array)
+#   sub_arrs = []
+#   (0...array.length-1).each do |first|
+#     (first..array.length - 1).each do |second|
+#        sub_arrs << array[first..second]
+#     end
+#   end
+
+#   largest = sub_arrs.shift.sum
+#   sub_arrs.each do |arr|
+#     if arr.sum > largest
+#       largest = arr.sum
+#     end
+#   end
+#   largest
+# end
+
+def largest_contiguous_subsum(array)
+
+  array.length.times do
+    array.each.with_index do |ele,i|
+      
+    end
+  end
+end
+
+# list = [5, 3, -7]
+# p largest_contiguous_subsum(list) # => 8
+
+# list2 = [2, 3, -6, 7, -6, 7]
+# p largest_contiguous_subsum(list2)
+
+# list3 = [-5, -1, -3]
+# p largest_contiguous_subsum(list3)
+
