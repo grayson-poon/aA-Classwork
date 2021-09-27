@@ -1,5 +1,8 @@
+require "set"
+
 class MaxIntSet
   def initialize(max)
+    @store = Array.new(max, false)
   end
 
   def insert(num)
@@ -9,6 +12,11 @@ class MaxIntSet
   end
 
   def include?(num)
+    @store.each do |ele|
+      return true if ele == num
+    end
+
+    return false
   end
 
   private
