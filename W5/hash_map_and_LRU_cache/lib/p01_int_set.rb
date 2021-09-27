@@ -1,22 +1,41 @@
 require "set"
 
 class MaxIntSet
+
+  attr_reader :max
+
   def initialize(max)
     @store = Array.new(max, false)
+    @max = max
   end
 
   def insert(num)
+    if num > max || num < 0
+      raise 'value_error' 
+    else
+      self.add(num)
+      @store[num] = true
+    end
+
   end
 
   def remove(num)
+    self.delete(num)
   end
 
   def include?(num)
-    @store.each do |ele|
-      return true if ele == num
+    if @store[num] == true
+      return true
+    else
+      return false
     end
 
-    return false
+
+    # @store.each do |ele|
+    #   return true if ele == num
+    # end
+
+    # return false
   end
 
   private
