@@ -3,16 +3,28 @@ def eighties_b_movies
   # 3 and 5 (inclusive).
   # Show the id, title, year, and score.
 
+  Movie
+    .select(:id, :title, :yr, :score)
+    .where("yr BETWEEN 1980 AND 1989 AND score BETWEEN 3 AND 5")
+
 end
 
 def bad_years
   # List the years in which a movie with a rating above 8 was not released.
+
+  Movie
+    .group(:yr)
+    .having("MAX(score) < 8")
+    .order("yr ASC")
+    .pluck(:yr)
 
 end
 
 def cast_list(title)
   # List all the actors for a particular movie, given the title.
   # Sort the results by starring order (ord). Show the actor id and name.
+
+  
 
 end
 
