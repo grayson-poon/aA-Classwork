@@ -1,0 +1,37 @@
+<h1><%= @spec_cat.name %>'s Info</h1>
+
+<a href="<%= cats_url %>">Go back</a> 
+
+<br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">Info</th>
+      <th colspan="1">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> ID </td>
+      <td> <%= @spec_cat.id %> </td>
+    </tr>
+    <tr>
+      <td> Birth Date </td>
+      <td> <%= @spec_cat.birth_date %> </td>
+    </tr>
+    <tr>
+      <td> Color </td>
+      <td> <%= @spec_cat.color %> </td>
+    </tr>
+    <tr>
+      <td> Sex </td>
+      <td> <%= @spec_cat.sex %> </td>
+    </tr>
+    <tr>
+      <td> Description </td>
+      <td> <%= @spec_cat.description %> </td>
+    </tr>
+  </tbody>
+</table>
+

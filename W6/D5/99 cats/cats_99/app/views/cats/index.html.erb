@@ -1,0 +1,14 @@
+<h1>All Cats</h1>
+
+<ul>
+  <% @cats.each do |spec_cat| %>
+    <li>ID: <%= spec_cat.id %> / Name: <%= "#{spec_cat.name}'s info:"%></li>
+    <ul>
+      <li>Birth Date: <%= spec_cat.birth_date %></li>
+      <li>Color: <%= spec_cat.color %></li>
+      <li>Sex: <%= spec_cat.sex %></li>
+      <li>Description: <%= spec_cat.description %></li>
+      <li><a href= "<%=cat_url(spec_cat.id)%>">More cat info</a></li>
+    </ul>
+  <% end %>
+</ul> 
