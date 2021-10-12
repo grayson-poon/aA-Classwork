@@ -5,15 +5,15 @@ class UsersController < ApplicationController
     render :new
   end
 
-  def create # post request: click submit button to literally create the user in the db
-    user = User.new(strong_user_params)
+  def create # post request: click submit button to create the user in the db
+    @user = User.new(strong_user_params)
 
-    if user.save
-      log_in_user!(user)
-      redirect_to user_url(user.id)
+    if @user.save
+      log_in_user!(@user)
+      redirect_to user_url(@user.id)
     else
-      flash[:errors] = user.errors.full_messages # why does this not show? (duplicate emails)
-      redirect_to new_user_url
+      flash[:errors] = @user.errors.full_messages
+      render :new
     end
   end
 

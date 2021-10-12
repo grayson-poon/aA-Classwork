@@ -18,8 +18,8 @@ class User < ApplicationRecord
     if user && user.is_correct_password?(password)
       return user
       # redirect_to user_url(user.id)
-    else
-      flash[:errors] = ["Invalid username or password"]
+    # else
+    #   flash[:errors] = ["Invalid username or password"]
     end
   end
 
