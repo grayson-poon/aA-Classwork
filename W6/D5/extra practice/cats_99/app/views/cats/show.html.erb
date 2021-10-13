@@ -1,0 +1,27 @@
+<a href="<%= cats_url %>" method="GET">Back to all cats</a>
+
+<h1><%="#{@cat.name}'s Page"%></h1>
+
+<a href="<%= edit_cat_url(@cat.id) %>">Edit your cat!</a>
+
+<br>
+<br>
+
+<a href="<%= cat_url(@cat.id) %>" data-confirm="Are you sure?" data-method="DELETE">Delete your cat!</a>
+
+
+<p>Cat ID: <%= @cat.id %></p>
+<p>Name: <%= @cat.name %></p>
+<p>Birthday: <%= @cat.birth_date %></p>
+<p>Color: <%= @cat.color %></p>
+<p>Sex: <%= @cat.sex %></p>
+<p>Description: <%= @cat.description %></p>
+
+<br>
+
+<!-- 
+<form action="<%= cat_url(@cat.id) %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete cat!">
+</form>
+-->

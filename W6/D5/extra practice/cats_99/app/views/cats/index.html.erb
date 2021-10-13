@@ -1,0 +1,14 @@
+<h1>All Cats!</h1>
+
+<a href="<%= new_cat_url %>">Sign Up Your Cat</a>
+
+<% @cats.each do |cat| %>
+
+  <h3><a href="<%= cat_url(cat.id) %>">Cat ID: <%= cat.id %></a></h3>
+  <p>Name: <%= cat.name %></p>
+  <p>Birthday: <%= cat.birth_date %></p>
+  <p>Color: <%= cat.color %></p>
+  <p>Sex: <%= cat.sex %></p>
+  <p>Description: <%= cat.description %></p>
+
+<% end %>

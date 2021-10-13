@@ -1,0 +1,37 @@
+<h1>Edit your Cat!</h1>
+
+<form action="<%= cat_url(@cat.id) %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="name">Cat's Name</label>
+  <input id="name" type="text" name="cat[name]" value="<%= @cat.name %>">
+
+  <br>
+
+  <label for="birth_date">Birthday</label>
+  <input id="birth_date" type="text" name="cat[birth_date]" value="<%= @cat.birth_date %>">
+
+  <br>
+
+  <label for="color">Color</label>
+  <input id="color" type="text" name="cat[color]" value="<%= @cat.color %>">
+
+  <br>
+
+  <label>Sex:</label>
+  <input id="male" type="radio" name="cat[sex]" value="M">
+  <label for="male">M</label>
+
+  <input id="female" type="radio" name="cat[sex]" value="F">
+  <label for="female">F</label>
+
+  <br>
+
+  <label for="description">Description</label>
+  <input id="description" type="text" name="cat[description]" value="<%= @cat.description %>">
+
+  <br>
+
+  <input type="submit" value="Update Your Cat!">
+
+</form>

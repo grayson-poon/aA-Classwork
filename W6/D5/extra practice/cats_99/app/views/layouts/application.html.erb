@@ -10,6 +10,17 @@
   </head>
 
   <body>
+
+    <% if flash[:messages] %>
+        <h2><%= flash[:messages].join("") %></h2>
+    <% end %>
+
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |error| %>
+        <h2><%= error %></h2>
+      <% end %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
