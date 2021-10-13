@@ -1,17 +1,28 @@
 <!-- tells where to direct request and which action verb when hit submit -->
-<form action="<%= users_url %>" method="POST">
 
-  <label for="email">email</label>
-  <input id="email" type="text" name="user[email]" value="<%= @user.email %>">
+<body id="users">
+  
 
-  <br>
+  <p>Already have an account?
+  <a href="<%= new_session_url %>">Login!</a>
+  </p>
 
-  <label for="password">password</label>
-  <input id="password" type="password" name="user[password]" value="">
+  <form action="<%= users_url %>" method="POST">
 
-  <br>
-  <br>
+    <label for="email">email</label>
+    <input id="email" type="text" name="user[email]" value="<%= @user.email %>">
 
-  <input type="submit" value="Sign Up!">
+    <br>
 
-</form>
+    <label for="password">password</label>
+    <input id="password" type="password" name="user[password]" value="">
+
+    <br>
+    <br>
+
+    <input type="submit" value="Sign Up!">
+
+  </form>
+
+</body>
+

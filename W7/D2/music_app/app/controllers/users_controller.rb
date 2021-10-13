@@ -12,13 +12,13 @@ class UsersController < ApplicationController
       log_in_user!(@user)
       redirect_to user_url(@user.id)
     else
-      flash[:errors] = @user.errors.full_messages
+      flash.now[:errors] = @user.errors.full_messages
       render :new
     end
   end
 
   def show
-    render :show
+    # render :show
   end
 
   private

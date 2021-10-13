@@ -17,8 +17,5 @@ class ApplicationController < ActionController::Base
     session[:session_token] = new_token # updates session token stored in cookie
   end
 
-  
-
-
 
 end

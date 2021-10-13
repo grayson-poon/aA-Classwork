@@ -7,7 +7,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="styling.css">
   </head>
 
   <body>
@@ -15,7 +14,7 @@
     <header>
     <h1>Music App</h1>
     </header>
-
+    
     <%= yield %>
 
     <% if flash[:errors] %>
