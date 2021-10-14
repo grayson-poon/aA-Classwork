@@ -1,0 +1,26 @@
+
+<body id="sessions">
+
+  <p>Don't have an account yet?
+  <a href="<%= new_user_url %>">Sign Up!</a>
+  </p>
+
+  <form action="<%= session_url %>" method="POST">
+
+    <label for="email">email</label>
+    <input id="email" type="text" name="user[email]" value="">
+
+    <br>
+
+    <label for="password">password</label>
+    <input id="password" type="password" name="user[password]" value="">
+
+    <br>
+    <br>
+
+    <input type="submit" value="Log In!">
+
+  </form>
+  
+</body>
+
