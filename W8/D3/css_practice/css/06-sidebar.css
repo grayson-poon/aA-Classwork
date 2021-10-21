@@ -1,0 +1,37 @@
+/* PHASE 0: Sidebar */
+
+.profile-picture a {
+  display: block;
+  position: relative;
+  /* margin-top: -50px; */
+}
+
+.profile-nav {
+  margin: 20px 0px; /* clockwise direction */
+}
+
+.profile-info p:first-child {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.profile-info p:last-child {
+    font-size: 15px;
+}
+
+.profile-nav > a {
+  display: flex;
+  align-items: left;
+  font-size: 20px;
+  border-bottom: 2px solid black;
+  padding: 15px 15px;
+}
+
+.profile-nav a:first-child {
+  border-top: 2px solid black;
+}
+
+.profile-nav > a:hover {
+  background-color: blue;
+}

@@ -1,0 +1,23 @@
+/* PHASE 2: Thumbs */
+
+.thumb {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3);
+  grid-gap: 15px;
+}
+
+.thumb li {
+  list-style: none;
+}
+
+.thumb li img {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+
+.thumb li img:hover {
+  border: 2px solid black;
+}

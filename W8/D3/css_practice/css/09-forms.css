@@ -1,0 +1,22 @@
+/* PHASE 3: Forms */
+
+.content-main form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-main form input[type="text"] {
+  border: 1px solid gray;
+}
+
+.content-main form input[type="submit"] {
+  padding: 10px;
+  background-color: chartreuse;
+  border-radius: 10px;
+}
+
+.content-main form a:hover {
+  color: blue;
+  text-decoration: underline;
+}
