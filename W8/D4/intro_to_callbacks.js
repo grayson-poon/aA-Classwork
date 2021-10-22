@@ -84,7 +84,7 @@ function askIfGreaterThan(el1, el2, callback) {
     } else {
       callback(false);
     }
-    // reader.close();
+    // reader.close(); NOT SUPPOSED TO CLOSE THE TERMINAL WHEN FUNCTION IS IN A RECURSIVE CALL
   });
 
 }
@@ -103,17 +103,15 @@ function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
 
   if (i === arr.length - 1) {
     outerBubbleSortLoop(madeAnySwaps);
-
   } else {
     askIfGreaterThan(arr[i], arr[i + 1], function(isGreaterThan) {
       if (isGreaterThan) {
         [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
         madeAnySwaps = true;
-        innerBubbleSortLoop(arr, i + 1, madeAnySwaps, outerBubbleSortLoop);
       }
+      innerBubbleSortLoop(arr, i + 1, madeAnySwaps, outerBubbleSortLoop);
     });
   }
-
 }
 
 function absurdBubbleSort(arr, sortCompletionCallback) {
@@ -126,7 +124,7 @@ function absurdBubbleSort(arr, sortCompletionCallback) {
     if (madeAnySwaps) {
       innerBubbleSortLoop(arr, 0, false, outerBubbleSortLoop); 
     } else {
-      sortCompletionCallback;
+      sortCompletionCallback(arr);
     }
 
   }
@@ -136,7 +134,7 @@ function absurdBubbleSort(arr, sortCompletionCallback) {
 
 // innerBubbleSortLoop([3,2,1], 0, false);
 
-absurdBubbleSort([3, 2, 1], function(arr) {
-  console.log("Sorted array: " + JSON.stringify(arr));
-  reader.close();
-});
+// absurdBubbleSort([3, 2, 1], function(arr) {
+//   console.log("Sorted array: " + JSON.stringify(arr));
+//   reader.close();
+// });
