@@ -94,11 +94,52 @@ end
 
 # p largest_contiguous_subsum(list)
 
-list = [5, 3, -7]
-p largest_contiguous_subsum(list) # => 8
+# list = [5, 3, -7]
+# p largest_contiguous_subsum(list) # => 8
 
-list2 = [2, 3, -6, 7, -6, 7]
-p largest_contiguous_subsum(list2)
+# list2 = [2, 3, -6, 7, -6, 7]
+# p largest_contiguous_subsum(list2)
 
-list3 = [-5, -1, -3]
-p largest_contiguous_subsum(list3)
+# list3 = [-5, -1, -3]
+# p largest_contiguous_subsum(list3)
+
+
+def two_sum_indices(arr, target_sum)
+  complements = {}
+  pairs = []
+  arr.each_with_index do |el, current_idx| # el = 5, current_idx = 0
+    complement, firstIdx = complements[target_sum - el]
+    if complement
+      pairs << [firstIdx, current_idx]
+    end
+
+    complements[el] = [el, current_idx] # complements[8]
+    p complements
+    p pairs
+    # p complements[target_sum - el] # complements[0 - 8] => complements[-8]
+    # p complement # complement = [-8,1]
+    p "------------"
+  end
+  nil
+end
+
+# p two_sum_indices([5,1,-7,-5], 0) # => [0,3]
+# p two_sum_indices([1,1,-1,-1], 0) # => [0,2] [0,3] [1,2] [1,3]
+
+def two_sum_indices2(arr, target_sum) # current_num + other_num = target_sum
+  complements = {}
+  pairs = []
+
+  arr.each.with_index do |current_num, current_idx| # current_num = target_sum - other_num
+    first_idx = complements.key(target_sum - current_num)
+    if first_idx
+      pairs << [first_idx, current_idx]
+    end
+
+    complements[current_idx] = current_num
+  end
+
+  return pairs
+end
+
+p two_sum_indices2([1,1,-1,-1], 0) # => [0,2] [0,3] [1,2] [1,3]
