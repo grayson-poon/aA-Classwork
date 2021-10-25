@@ -12,22 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   canvas.width = 500;
   canvas.height = 500;
 
- 
-
-  let test = new MovingObject({pos: [5, 5], vel: 10, radius: 20, color: 'red'});
-  debugger
-  console.log(test);
-
+  let test = new MovingObject({pos: [50, 50], vel: [100, 100], radius: 20, color: 'red'});
   test.draw(ctx);
 
-  // ctx.fillStyle = 'red';
-  // ctx.fillRect(200, 255, 300, 255);
-
-  // ctx.beginPath();
-  // ctx.arc(250, 250, 50, 0, 4 * Math.PI, true);
-  // ctx.strokeStyle = "green";
-  // ctx.lineWidth = 10;
-  // ctx.stroke();
-  // ctx.fillStyle = "blue";
-  // ctx.fill();
 });
