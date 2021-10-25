@@ -9,13 +9,23 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/asteroid.js":
+/*!*************************!*\
+  !*** ./src/asteroid.js ***!
+  \*************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\n\nfunction Asteroid(position) {\n  let options = {\n    pos: position,\n    vel: Util.randomVec(Math.random(0.2) * 100),\n    radius: 20,\n    color: 'red'\n  }\n\n  return new MovingObject(options);\n}\n\nUtil.inherits(Asteroid, MovingObject);\n\nmodule.exports = Asteroid;\n\n//# sourceURL=webpack://asteroids/./src/asteroid.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("console.log('Webpack is working')\n\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nwindow.MovingObject = MovingObject;\n\nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const canvas = document.getElementById('game-canvas');\n  const ctx = canvas.getContext('2d');\n\n  canvas.width = 500;\n  canvas.height = 500;\n\n  let test = new MovingObject({pos: [50, 50], vel: [100, 100], radius: 20, color: 'red'});\n  test.draw(ctx);\n\n});\n\n//# sourceURL=webpack://asteroids/./src/index.js?");
+eval("console.log('Webpack is working')\n\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nwindow.MovingObject = MovingObject;\n\nconst Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\nwindow.Asteroid = Asteroid;\n\nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const canvas = document.getElementById('game-canvas');\n  const ctx = canvas.getContext('2d');\n\n  canvas.width = 500;\n  canvas.height = 500;\n\n  let test = new MovingObject({pos: [50, 50], vel: [100, 100], radius: 20, color: 'red'});\n  test.draw(ctx);\n\n  let testAsteroid = new Asteroid([150, 150]);\n  testAsteroid.draw(ctx);\n  console.log(testAsteroid);\n\n});\n\n//# sourceURL=webpack://asteroids/./src/index.js?");
 
 /***/ }),
 

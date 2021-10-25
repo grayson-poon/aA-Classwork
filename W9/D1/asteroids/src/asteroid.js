@@ -1,10 +1,17 @@
 const MovingObject = require("./moving_object");
-const { inherits } = require("./util");
+const Util = require("./util");
 
-function Asteroid(pos, color = "red", radius = 20) {
-  // this.pos = 
-  this.vel = function findVel(Math.random(0.2) * 100)
-  // this.color = 
+function Asteroid(position) {
+  let options = {
+    pos: position,
+    vel: Util.randomVec(Math.random(0.2) * 100),
+    radius: 20,
+    color: 'red'
+  }
+
+  return new MovingObject(options);
 }
 
-inherits(Asteroid, MovingObject);
+Util.inherits(Asteroid, MovingObject);
+
+module.exports = Asteroid;
