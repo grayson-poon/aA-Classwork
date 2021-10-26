@@ -1,29 +1,34 @@
+module.exports = Game;
+
 function Game() {
-  const DIM_X = 500;
-  const DIM_Y = 500;
-  const NUM_ASTEROIDS = 5;
   this.asteroids = [];
 
-  this.addAsteroids()
+  this.addAsteroids();
 }
+
+Game.DIM_X = 500;
+
+Game.DIM_Y = 500;
+
+Game.NUM_ASTEROIDS = 5;
 
 Game.prototype.addAsteroids = function() {
   let counter = 0;
 
-  while (counter < NUM_ASTEROIDS) {
-    asteroids.push(new Asteroid(this.randomPosition()))
+  while (counter < Game.NUM_ASTEROIDS) {
+    this.asteroids.push(new Asteroid(this.randomPosition()))
     counter += 1;
   }
 }
 
 Game.prototype.randomPosition = function() {
-  let posX = Math.random(DIM_X/1000) * 1000;
-  let posY = Math.random(DIMY_Y/1000) * 1000;
+  let posX = Math.random() * Game.DIM_X;
+  let posY = Math.random() * Game.DIM_Y;
   return [posX, posY];
 }
 
 Game.prototype.draw = function(ctx) {
-  ctx.clearRect();
+  ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
 
   this.asteroids.forEach(function(asteroid) {
     asteroid.draw(ctx);
