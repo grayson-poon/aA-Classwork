@@ -1,0 +1,14 @@
+.ttt ul {
+  display: grid;
+  grid-template-rows: repeat(3, 125px);
+  grid-template-columns: repeat(3, 125px);
+  grid-gap: 0;
+  aspect-ratio: 1;
+}
+
+.ttt ul li {
+  list-style: none;
+  border-style: solid;
+  border-width: 1px;
+}
+
