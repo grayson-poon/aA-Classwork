@@ -10,9 +10,29 @@ document.addEventListener("DOMContentLoaded", () => {
   let test = new View(game, figureClass);
 
   test.setupBoard();
-
-
-
 });
 
 
+
+const tiles = document.querySelectorAll(".ttt ul li")
+
+// for (let i = 0; i < 3; i++) {
+//   for (let j = 0; j < 3; j++) {
+//     tiles[i, j].setAttribute("pos", `${[i, j]}`)
+//   }
+// }
+
+
+// tiles.forEach(el => {
+
+// })
+
+
+// tiles.forEach(li => {
+//   li.addEventListener("click", handleClick)
+// })
+
+
+// e.preventDefault()
+// let ele = e.target;
+// ele.classList.toggle(".clicked")

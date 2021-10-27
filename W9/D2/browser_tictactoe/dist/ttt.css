@@ -1,14 +1,35 @@
+h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
 .ttt ul {
   display: grid;
   grid-template-rows: repeat(3, 125px);
   grid-template-columns: repeat(3, 125px);
   grid-gap: 0;
-  aspect-ratio: 1;
+justify-content: center;
+
 }
 
 .ttt ul li {
   list-style: none;
   border-style: solid;
-  border-width: 1px;
+  border-width: 5px;
+  font-size: 100px;
+  text-align: center;
 }
+.ttt ul li.clicked {
+  background-color: white;
+}
+
+.ttt ul li {
+  background-color: gray;
+}
+
+.ttt ul li:hover {
+  background-color: yellow;
+}
+
+
 
