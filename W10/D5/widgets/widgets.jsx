@@ -4,6 +4,5 @@ import Clock from './frontend/clock';
 
 document.addEventListener("DOMContentLoaded", (event) => {
   const root = document.getElementById("root");
-
-  ReactDOM.render(<Clock />, root);
+  ReactDOM.render(<Clock  />, root);
 });
