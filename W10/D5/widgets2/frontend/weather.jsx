@@ -3,7 +3,6 @@ import React from "react";
 export default class Weather extends React.Component {
   constructor(props) {
     super(props)
-
     this.weatherNearMe = this.weatherNearMe.bind(this);
   }
 
@@ -30,7 +29,7 @@ export default class Weather extends React.Component {
 
     request.open(
       "GET",
-      "api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={API key}",
+      `api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid={API key}`,
       true
     );
     request.send();

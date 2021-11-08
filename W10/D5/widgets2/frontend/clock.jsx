@@ -6,7 +6,6 @@ export default class Clock extends React.Component {
     this.state = {
       time: new Date()
     };
-
     this.tick = this.tick.bind(this);
   }
 
@@ -28,7 +27,6 @@ export default class Clock extends React.Component {
     const seconds = this.state.time.getSeconds();
     const minutes = this.state.time.getMinutes();
     const hours = this.state.time.getHours();
-
     const date = this.state.time.toDateString();
 
     return (

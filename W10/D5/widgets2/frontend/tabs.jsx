@@ -4,11 +4,9 @@ import Header from "./header";
 export default class Tabs extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
     this.state = {
       tabIndex: 0,
     };
-
     this.updateTabIndex = this.updateTabIndex.bind(this);
   }
 
