@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./header";
 
 export default class Tabs extends React.Component {
   constructor(props) {
@@ -25,29 +26,5 @@ export default class Tabs extends React.Component {
         <article>{currentTab.content}</article>
       </>
     );
-  }
-}
-
-class Header extends React.Component {
-  render() {
-    const selected = this.props.currentTab;
-    const titles = this.props.collection.map((sub, idx) => {
-      let name = (selected === idx ? "selected" : "");
-
-      return (
-        <li
-        key={idx}
-        className={name}
-        onClick={() => this.props.updateTabIndex(idx)}>
-        {sub.title}
-        </li>
-      )
-    });
-
-    return (
-      <ul>
-        {titles}
-      </ul>
-    )
   }
 }

@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import Clock from "./frontend/clock";
 import Tabs from "./frontend/tabs";
+import Weather from "./frontend/weather";
 
 const Root = () => {
   const collection = [
@@ -13,9 +15,8 @@ const Root = () => {
   return (
     <div id="root">
       <Clock />
-      <ul>
-        <Tabs collection={collection}/>
-      </ul>
+      <Tabs collection={collection}/>
+      <Weather />
     </div>
   );
 }
