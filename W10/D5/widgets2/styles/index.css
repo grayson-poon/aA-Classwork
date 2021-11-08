@@ -1,0 +1,12 @@
+/* Clock Font: font-family: 'Mochiy Pop P One', sans-serif; */
+
+div#root {
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+div#time_date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: red;
+}

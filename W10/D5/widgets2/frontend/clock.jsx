@@ -29,10 +29,19 @@ export default class Clock extends React.Component {
     const minutes = this.state.time.getMinutes();
     const hours = this.state.time.getHours();
 
+    const date = this.state.time.toDateString();
+
     return (
-      <div>
-        <h1>TikTok</h1>
-        <h2>{hours}:{minutes}:{seconds}</h2>
+      <div id="time_date">
+        <div id="time">
+          <h1>TikTok Time</h1>
+          <h1>Date</h1>
+        </div>
+
+        <div id="date">
+          <h1>{hours}:{minutes}:{seconds}</h1>
+          <h1>{date}</h1>
+        </div>
       </div>
     );
   }
