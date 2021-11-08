@@ -14,9 +14,7 @@ const Root = () => {
     <div id="root">
       <Clock />
       <ul>
-        {collection.map((tab, idx) => (
-          <Tabs key={idx} title={tab.title} content={tab.content} />
-        ))}
+        <Tabs collection={collection}/>
       </ul>
     </div>
   );
