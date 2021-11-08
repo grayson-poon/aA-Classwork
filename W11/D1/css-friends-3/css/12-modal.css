@@ -1,0 +1,49 @@
+/* PHASE 12: Modal */
+
+div.modal-container.is-open {
+  display: inline;
+}
+
+div.modal-container {
+  display: none;
+}
+
+div.modal-screen {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.closing-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: white;
+  width: 15px;
+  height: 15px;
+  z-index: 6;
+  text-align: center;
+  line-height: 50%;
+  border: 2px solid transparent;
+}
+
+button.closing-button:hover {
+  border: 2px solid red;
+}
+
+div.modal-form {
+  position: absolute;
+  bottom:25%;
+  right: 25%;
+  left: 25%;
+  right: 25%;
+  background-color: blue;
+  z-index: 4;
+}
