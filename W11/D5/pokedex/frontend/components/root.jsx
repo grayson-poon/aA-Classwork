@@ -1,7 +1,15 @@
 import React from "react";
+import { Provider } from "react-redux";
+import PokemonIndexContainer from "./pokemon/pokemon_index_container";
 
-export const Root = () => {
+
+const Root = ({store}) => {
   return (
-    <div id="root">React is working</div>
+    <Provider store={store} >
+      <div> Hello World</div>
+      <PokemonIndexContainer />
+    </Provider>
   );
 };
+
+export default Root; 
