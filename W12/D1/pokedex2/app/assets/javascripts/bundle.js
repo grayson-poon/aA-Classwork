@@ -90,23 +90,23 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/pokemon_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_ALL_POKEMON, RECEIVE_POKEMON, receiveAllPokemon, requestAllPokemon, receivePokemon, requestPokemon */
+/*! exports provided: RECEIVE_ALL_POKEMON, RECEIVE_POKEMON_INFO, receiveAllPokemon, requestAllPokemon, receivePokemonInfo, requestPokemon */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_POKEMON", function() { return RECEIVE_ALL_POKEMON; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_POKEMON", function() { return RECEIVE_POKEMON; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_POKEMON_INFO", function() { return RECEIVE_POKEMON_INFO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllPokemon", function() { return receiveAllPokemon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAllPokemon", function() { return requestAllPokemon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePokemon", function() { return receivePokemon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePokemonInfo", function() { return receivePokemonInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestPokemon", function() { return requestPokemon; });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/api_util */ "./frontend/util/api_util.js");
 
 
 var RECEIVE_ALL_POKEMON = "RECEIVE_ALL_POKEMON";
-var RECEIVE_POKEMON = "RECEIVE_POKEMON";
+var RECEIVE_POKEMON_INFO = "RECEIVE_POKEMON_INFO";
 var receiveAllPokemon = function receiveAllPokemon(pokemon) {
   return {
     type: RECEIVE_ALL_POKEMON,
@@ -120,16 +120,16 @@ var requestAllPokemon = function requestAllPokemon() {
     });
   };
 };
-var receivePokemon = function receivePokemon(pokemon) {
+var receivePokemonInfo = function receivePokemonInfo(payload) {
   return {
-    type: RECEIVE_POKEMON,
-    pokemon: pokemon
+    type: RECEIVE_POKEMON_INFO,
+    payload: payload
   };
 };
 var requestPokemon = function requestPokemon(pokemonId) {
   return function (dispatch) {
-    return _util_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchPokemon"](pokemonId).then(function (pokemon) {
-      return dispatch(receivePokemon(pokemon));
+    return _util_api_util__WEBPACK_IMPORTED_MODULE_1__["fetchPokemon"](pokemonId).then(function (payload) {
+      return dispatch(receivePokemonInfo(payload));
     });
   };
 };
@@ -423,13 +423,15 @@ var pokemonReducer = function pokemonReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
+  var newState = Object.assign({}, state);
 
   switch (action.type) {
     case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_POKEMON"]:
       return Object.assign({}, action.pokemon, state);
 
-    case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_POKEMON"]:
-      return action.pokemon;
+    case _actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_POKEMON_INFO"]:
+      newState[action.payload.pokemon.id] = action.payload.pokemon;
+      return newState;
 
     default:
       return state;

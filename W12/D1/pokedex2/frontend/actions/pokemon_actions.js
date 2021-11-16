@@ -2,7 +2,7 @@ import { applyMiddleware } from 'redux';
 import * as APIUtil from '../util/api_util';
 
 export const RECEIVE_ALL_POKEMON = "RECEIVE_ALL_POKEMON";
-export const RECEIVE_POKEMON = "RECEIVE_POKEMON";
+export const RECEIVE_POKEMON_INFO = "RECEIVE_POKEMON_INFO";
 
 export const receiveAllPokemon = (pokemon) => ({
   type: RECEIVE_ALL_POKEMON,
@@ -14,12 +14,12 @@ export const requestAllPokemon = () => (dispatch) => (
     .then(pokemon => dispatch(receiveAllPokemon(pokemon)))
 )
 
-export const receivePokemon = (pokemon) => ({
-  type: RECEIVE_POKEMON,
-  pokemon
+export const receivePokemonInfo = (payload) => ({
+  type: RECEIVE_POKEMON_INFO,
+  payload
 });
 
 export const requestPokemon = (pokemonId) => (dispatch) => (
   APIUtil.fetchPokemon(pokemonId)
-    .then((pokemon) => dispatch(receivePokemon(pokemon)))
+    .then((payload) => dispatch(receivePokemonInfo(payload)))
 )
