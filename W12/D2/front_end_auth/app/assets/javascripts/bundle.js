@@ -291,6 +291,8 @@ var _home2 = _interopRequireDefault(_home);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _route_utils = __webpack_require__(/*! ../utils/route_utils */ "./frontend/utils/route_utils.jsx");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function () {
@@ -299,8 +301,8 @@ exports.default = function () {
     null,
     _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _nav_bar_container2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _home2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/chirps', component: _chirp_index_container2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/signup', component: _signup_container2.default })
+    _react2.default.createElement(_route_utils.ProtectedRoute, { path: '/chirps', component: _chirp_index_container2.default }),
+    _react2.default.createElement(_route_utils.AuthRoute, { path: '/signup', component: _signup_container2.default })
   );
 };
 
@@ -566,7 +568,21 @@ exports.default = function (_ref) {
   var currentUser = _ref.currentUser,
       logout = _ref.logout;
 
-  var display = _react2.default.createElement(
+  var display = currentUser ? _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      'Hello ',
+      currentUser.username
+    ),
+    _react2.default.createElement(
+      'button',
+      { onClick: logout },
+      'Log Out'
+    )
+  ) : _react2.default.createElement(
     'div',
     null,
     _react2.default.createElement(
@@ -1180,6 +1196,69 @@ var deleteLikeFromChirp = exports.deleteLikeFromChirp = function deleteLikeFromC
     data: { id: id }
   });
 };
+
+/***/ }),
+
+/***/ "./frontend/utils/route_utils.jsx":
+/*!****************************************!*\
+  !*** ./frontend/utils/route_utils.jsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ProtectedRoute = exports.AuthRoute = undefined;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _reactRouter = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    loggedIn: Boolean(state.session.currentUser)
+  };
+};
+
+// <AuthRoute path="" component={} />
+var Auth = function Auth(_ref) {
+  var loggedIn = _ref.loggedIn,
+      path = _ref.path,
+      Component = _ref.component;
+  return _react2.default.createElement(_reactRouter.Route, {
+    path: path,
+    render: function render(props) {
+      return loggedIn ? _react2.default.createElement(_reactRouter.Redirect, { to: "/" }) : _react2.default.createElement(Component, props);
+    }
+  });
+};
+
+var Protected = function Protected(_ref2) {
+  var loggedIn = _ref2.loggedIn,
+      path = _ref2.path,
+      Component = _ref2.component;
+  return _react2.default.createElement(_reactRouter.Route, {
+    path: path,
+    render: function render(props) {
+      return loggedIn ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouter.Redirect, { to: "/signup" });
+    }
+  });
+};
+
+var AuthRoute = exports.AuthRoute = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps)(Auth));
+// withRouter provides access to location, history, and match
+
+var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouter.withRouter)((0, _reactRedux.connect)(mapStateToProps)(Protected));
 
 /***/ }),
 
@@ -26482,6 +26561,68 @@ var generatePath = function generatePath() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (generatePath);
+
+/***/ }),
+
+/***/ "./node_modules/react-router/es/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/react-router/es/index.js ***!
+  \***********************************************/
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MemoryRouter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemoryRouter */ "./node_modules/react-router/es/MemoryRouter.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return _MemoryRouter__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _Prompt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prompt */ "./node_modules/react-router/es/Prompt.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return _Prompt__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _Redirect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Redirect */ "./node_modules/react-router/es/Redirect.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return _Redirect__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _Route__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Route */ "./node_modules/react-router/es/Route.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return _Route__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _Router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Router */ "./node_modules/react-router/es/Router.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return _Router__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _StaticRouter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./StaticRouter */ "./node_modules/react-router/es/StaticRouter.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return _StaticRouter__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _Switch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Switch */ "./node_modules/react-router/es/Switch.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return _Switch__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _generatePath__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./generatePath */ "./node_modules/react-router/es/generatePath.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "generatePath", function() { return _generatePath__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _matchPath__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./matchPath */ "./node_modules/react-router/es/matchPath.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return _matchPath__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _withRouter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./withRouter */ "./node_modules/react-router/es/withRouter.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return _withRouter__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /***/ }),
 
